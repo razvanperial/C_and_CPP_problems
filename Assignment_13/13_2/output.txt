@@ -1,0 +1,3 @@
+The sum of the numbers is: 1 + 9i
+The difference of the numbers is: 5 + 1i
+The product of the numbers is: -26 + 2i

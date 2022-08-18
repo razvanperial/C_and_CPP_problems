@@ -1,0 +1,51 @@
+/*
+CH-230-A
+a10 p1.[cpp]
+Razvan Perial
+rperial@jacobs-university.de
+*/
+
+--Comenting out using namespace std;
+
+error: ‘string’ was not declared in this scope; did you mean ‘std::string’
+
+For this error, we can see that the message indicates in some sense the 
+origin of it. String is a type that exists within the standard library,
+and when we commented out "using namespace std;", we get an error because the
+compiler cannot recognize the type string anymore. To fix this, we can replace 
+type string with std::string, just like in the error message. 
+
+error: variable or field ‘setName’ declared void
+error: ‘name’ was not declared in this scope; did you mean ‘rename’?
+error: ‘newname’ was not declared in this scope; did you mean ‘rename’?
+
+The errors above appear because the variables name and 
+newname are of type string, and the method setName takes newname as 
+parameter. Since the type string is undefined(as explained 
+in the first error explanation), the same error will occur for the variables,
+this being easily fixed by adding std::before the string declaration of 
+the variables.
+
+error: ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+error: ‘endl’ was not declared in this scope; did you mean ‘std::endl’?
+error: ‘cin’ was not declared in this scope; did you mean ‘std::cin’?
+
+These errors are similar to the string error described above. Cout, cin 
+and endl are all defined within the standard library, so commenting out
+using namespace std; will cause these errors to occur beacuse the compiler
+does not recognize cout, cin and endl. The fix is similar to the string
+fix, by just adding std:: in front of cin, cout, and endl.
+
+--removing Critter:: prefix from one of the methods in Critter.cpp 
+
+In function ‘void setName(std::string&)’:
+Critter.cpp:7:2: error: ‘name’ was not declared in this scope;
+did you mean ‘rename’?
+
+This error occurs because in the method setName, we use the the variable
+name and change its value. If we remove Critter:: from the method 
+definition, we will get this error because the compiler will not recognize
+the variable name, since it was declare inside the class Clitter as private,
+thus being able to be accessed only from within the specific class.
+One possible, although not optimal fix for this error would be to define 
+the setName method directly inside the Critter class in the Critter.h file.
